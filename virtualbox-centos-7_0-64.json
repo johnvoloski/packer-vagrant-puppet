@@ -1,0 +1,26 @@
+{
+  "variables": {
+  },
+
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
+      "iso_url": "./isos/CentOS-7.0-1406-x86_64.iso",
+      "iso_checksum": "713ea7847adcdd1700e92429f212721a",
+      "iso_checksum_type": "md5",
+      "guest_additions_url": "./isos/VBoxGuestAdditions_4.3.14.iso",
+      "guest_additions_sha256": "2a87971ae3c7e57e87713967a6f242acbdafcc09b635cba98e6dd3a7f5292d3b",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "10000s",
+      "shutdown_command": "sudo -S /sbin/halt -h -p",
+      "http_directory": "http",
+      "boot_wait": "10s",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/CentOS-7.0-1406-x86_64/ks.cfg<enter><wait>"
+      ]
+    }
+  ]
+}
